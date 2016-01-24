@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates :email, presence: true
+  validates :email, :first_name, :last_name, presence: true
 
   validate :unique_email, :password
 
@@ -21,6 +21,12 @@ class User < ActiveRecord::Base
   def unique_email
     if User.find_by(email: email)
       errors.add(:email, "has already been taken")
+    end
+  end
+
+  def self.authenticate(email, password)
+    if user = User.find_by(email: email)
+      user if (user.password == password)
     end
   end
 end

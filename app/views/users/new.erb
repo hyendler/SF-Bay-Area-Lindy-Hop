@@ -1,0 +1,25 @@
+<h1>Create New User</h1>
+
+<% if @errors %>
+    <ul>
+  <% @errors.each do |error| %>
+      <li><%= error %></li>
+  <% end %>
+    </ul>
+<% end %>
+
+<form action="/users/new" method="post">
+  <label for="first_name">First Name:</label><br>
+  <input type="text" name="first_name" value=""><br>
+
+  <label for="last_name">Last Name:</label><br>
+  <input type="text" name="last_name" value=""><br>
+
+  <label for="email">Email:</label><br>
+  <input type="text" name="email" value=""><br>
+
+  <label for="password">Password:</label><br>
+  <input type="password" name="password" placeholder="password"><br>
+  <input type="submit">
+</form>
+<br>

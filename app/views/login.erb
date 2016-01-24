@@ -1,0 +1,27 @@
+<h1>Login Page</h1>
+
+<% if @success %>
+  <ul>
+    <li><%= @success %></li>
+  </ul>
+<% end %>
+
+<% if @error %>
+  <ul>
+    <li><%= @error %></li>
+  </ul>
+<% end %>
+
+<form action="/login" method="post">
+  <label for="email">Login Email:</label><br>
+  <input type="text" name="email"><br>
+
+  <label for="password">Password:</label><br>
+  <input type="password" name="password"><br>
+  <input type="submit">
+</form>
+<br>
+
+<form action='/users/new' method="get">
+  <input type="submit" value="Create New User">
+</form>
