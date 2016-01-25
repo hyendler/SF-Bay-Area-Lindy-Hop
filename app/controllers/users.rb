@@ -5,7 +5,7 @@ end
 
 get '/login' do
   if session[:user_id]
-    redirect '/index'
+    redirect "/users/#{session[:user_id]}"
   else
     erb :login
   end
@@ -14,7 +14,7 @@ end
 post '/login' do
   if user = User.authenticate(params[:email], params[:password])
     session[:user_id] = user.id
-    redirect '/index'
+    redirect "/users/#{user.id}"
   else
     @error = "Invalid email or password. Please try again."
     erb :login
@@ -39,4 +39,9 @@ post '/users/new' do
     @errors = user.errors.full_messages
     erb :"/users/new"
   end
+end
+
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb :"/users/show"
 end
