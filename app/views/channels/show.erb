@@ -22,6 +22,14 @@
       <input type="submit" value="Unsubscribe">
     </form>
   <% else %>
-
+    <!-- <form action="/users/<%=session[:user_id]%>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <input type="hidden" name="channel_id" value="<%=@channel.id%>">
+      <input type="submit" value="Subscribe">
+    </form> -->
+    <form action="/subscriptions" method="post">
+      <input type="hidden" name="channel_id" value="<%=@channel.id%>">
+      <input type="submit" value="Subscribe">
+    </form>
   <% end %>
 <% end %>

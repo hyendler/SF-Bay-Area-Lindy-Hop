@@ -45,3 +45,11 @@ get '/users/:id' do
   @user = User.find(params[:id])
   erb :"/users/show"
 end
+
+# Why doesn't this work??
+# put '/users/:id' do
+#   user = User.find(params[:id])
+#   channel = Channel.find(params[:channel_id])
+#   user.channels << channel
+#   redirect "/channels/#{channel.id}"
+# end
