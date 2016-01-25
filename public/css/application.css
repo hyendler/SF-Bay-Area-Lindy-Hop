@@ -1,3 +1,7 @@
+body {
+  margin-left: 50px;
+}
+
 .container {
   margin: 20px auto;
   width: 800px;
@@ -8,6 +12,14 @@
 .container h1 {
   font-size: 17pt;
 
+}
+
+h1 {
+  clear: right;
+}
+
+h2 {
+  clear: right;
 }
 
 nav {
@@ -72,4 +84,15 @@ form.quirks {
   text-align: right;
   margin-right: 20px;
   width: 200px;
+}
+
+.navbar {
+  float: right;
+  margin-right: 200px;
+  margin-top: 0;
+}
+
+.navbar ul li {
+  display: inline;
+  margin: 5px;
 }

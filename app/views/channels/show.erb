@@ -1,3 +1,27 @@
 <h1><%= @channel.name %></h1>
 
+<% if @success %>
+  <ul>
+    <li><% @success %></li>
+  </ul>
+<% end %>
 
+<div class="channel-info">
+  <h4>Total number of subscribers:</h4>
+    <p><%= @channel.subscribers.length %> subscribers</p>
+
+  <h4>Channel price:</h4>
+    <p>$<%= @channel.price_per_month %></p>
+</div>
+
+<% if user = User.find(session[:user_id]) %>
+  <% if user.channels.include?(@channel) %>
+    <% subscription = Subscription.find_by(user_id: user.id, channel_id: @channel.id) %>
+    <form action="/subscriptions/<%= subscription.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Unsubscribe">
+    </form>
+  <% else %>
+
+  <% end %>
+<% end %>
