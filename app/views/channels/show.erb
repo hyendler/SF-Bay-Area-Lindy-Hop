@@ -14,7 +14,8 @@
     <p>$<%= @channel.price_per_month %></p>
 </div>
 
-<% if user = User.find(session[:user_id]) %>
+<% if session[:user_id] %>
+  <% user = User.find(session[:user_id]) %>
   <% if user.channels.include?(@channel) %>
     <% subscription = Subscription.find_by(user_id: user.id, channel_id: @channel.id) %>
     <form action="/subscriptions/<%= subscription.id %>" method="post">
