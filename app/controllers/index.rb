@@ -1,5 +1,4 @@
 get '/' do
-
-  redirect 'login'
+  redirect '/channels'
 end
 
