@@ -2,9 +2,10 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :channels, through: :subscriptions
 
-  validates :email, :first_name, :last_name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :first_name, :last_name, presence: true
 
-  validate :unique_email, :password
+  validate :password
 
   def password
     if hashed_password
@@ -18,12 +19,6 @@ class User < ActiveRecord::Base
     unless new_password.empty?
       @password = BCrypt::Password.create(new_password)
       self.hashed_password = @password
-    end
-  end
-
-  def unique_email
-    if User.find_by(email: email)
-      errors.add(:email, "has already been taken")
     end
   end
 
