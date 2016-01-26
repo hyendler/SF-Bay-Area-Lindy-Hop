@@ -12,7 +12,6 @@
     </ul>
 
     <h4>Total price per month for your subscriptions:</h4>
-      <% total = @user.channels.reduce(0) {|sum, channel| sum + channel.price_per_month.to_f } %>
-      <%= "$#{total}" %><br>
+      <%= "$#{@user.total_subscriptions}" %><br>
   <% end %>
 </div>

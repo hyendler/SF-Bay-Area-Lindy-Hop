@@ -23,8 +23,11 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate(email, password)
-    if user = User.find_by(email: email)
-      user if (user.password == password)
-    end
+    user = User.find_by(email: email)
+    return user if user && user.password == password
+  end
+
+  def total_subscriptions
+    self.channels.reduce(0) {|sum, channel| sum + channel.price_per_month.to_f }
   end
 end

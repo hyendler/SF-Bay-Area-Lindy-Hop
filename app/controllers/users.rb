@@ -1,7 +1,7 @@
-get '/index' do
-  @user = User.find(session[:user_id])
-  erb :index
-end
+# get '/index' do
+#   @user = User.find(session[:user_id])
+#   erb :index
+# end
 
 get '/login' do
   if session[:user_id]
@@ -30,7 +30,7 @@ get '/users/new' do
   erb :"/users/new"
 end
 
-post '/users/new' do
+post '/users' do
   user = User.new(params)
   if user.save
     @success = "User successfully created"

@@ -8,21 +8,18 @@
 
 <div class="channel-info">
   <h4>Total number of subscribers:</h4>
-    <p><%= @channel.subscribers.length %> subscribers</p>
+    <p><%= @channel.subscribers.count %> subscribers</p>
 
   <h4>Channel price:</h4>
     <p>$<%= @channel.price_per_month %></p>
 </div>
 
-<% if session[:user_id] %>
-  <% user = User.find(session[:user_id]) %>
-  <% if user.channels.include?(@channel) %>
-    <% subscription = Subscription.find_by(user_id: user.id, channel_id: @channel.id) %>
-    <form action="/subscriptions/<%= subscription.id %>" method="post">
+<% if @user.channels.include?(@channel)  %>
+    <form action="/subscriptions/<%= @subscription.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Unsubscribe">
     </form>
-  <% else %>
+<% else %>
     <!-- <form action="/users/<%=session[:user_id]%>" method="post">
       <input type="hidden" name="_method" value="put">
       <input type="hidden" name="channel_id" value="<%=@channel.id%>">
@@ -32,5 +29,4 @@
       <input type="hidden" name="channel_id" value="<%=@channel.id%>">
       <input type="submit" value="Subscribe">
     </form>
-  <% end %>
 <% end %>

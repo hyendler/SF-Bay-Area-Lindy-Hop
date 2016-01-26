@@ -1,9 +1,9 @@
 delete '/subscriptions/:id' do
   subscription = Subscription.find(params[:id])
-  @channel = Channel.find(subscription.channel_id)
+  # @channel = Channel.find(subscription.channel_id)
   # @success = "You have unsubscribed from the channel."
   subscription.destroy
-  redirect "/channels/#{@channel.id}"
+  redirect "/channels/#{subscription.channel_id}"
 end
 
 post '/subscriptions' do
