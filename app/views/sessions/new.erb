@@ -1,0 +1,17 @@
+
+<% if @error %>
+  <%= @error %>
+<% end %>
+
+<form id="login-form" action="/sessions" method="post">
+  <label for="login_user">username: </label>
+  <input type="text" name="username"><br>
+
+  <label for="login_password">password: </label>
+  <input type="password" name="password"><br>
+
+  <button type="submit">login</button>
+</form>
+<br><br>
+
+<a href="/users/new">New? Register here.</a>
