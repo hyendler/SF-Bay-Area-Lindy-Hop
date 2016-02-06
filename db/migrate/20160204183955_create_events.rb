@@ -7,8 +7,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :url
       t.string :facebook
       t.string :time, {null: false}
-      t.integer :lat, {null: false}
-      t.integer :lng, {null: false}
+      t.float :lat, {null: false}
+      t.float :lng, {null: false}
 
       t.timestamps
     end

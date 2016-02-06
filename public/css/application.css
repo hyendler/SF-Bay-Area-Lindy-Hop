@@ -31,9 +31,14 @@
   padding: 0px;
 }
 
+img {
+  height: 60px;
+}
 .list-box {
   list-style-type: none;
 }
+
+
 
 
 

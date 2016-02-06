@@ -1,46 +1,96 @@
 $(document).ready(function () {
-  // initMap();
   bindListeners();
+  // initMap();
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 37.601, lng: -122.205},
+    // scrollwheel: false,
+    zoom: 11
+
+    // setUpAllMarkets();
+  });
 });
 
 var bindListeners = function(){
   $("#main-box").on("click", ".list-box.day a", displayEvents)
+  $("#main-box").on("click", "#week-link a", displayWeek)
 }
+
+var markers = [];
+
+// var setUpAllMarkets = function(){
+//   $.get("/events").done(function(response){
+
+//   })
+// }
 
 var displayEvents = function(e){
   e.preventDefault();
-  console.log("i'm here!")
+
   var url = $(this).attr("href")
+  var day = url.substring(8).capitalize();
+
   $.get(url).done(function(response){
-    console.log(response)
+    var events = JSON.parse(response);
+    setMarkers(events);
+    $("#week").hide();
+
+    var urlDay = createDayURL(day);
+    $("#main-box").append(urlDay);
+
+    var eventsHTML = createEventsHTML(events);
+    $("#main-box").append(eventsHTML);
   })
 }
 
-var initMap = function(){
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
-    var myLatlng = new google.maps.LatLng(37.785,-122.440);
-      var mapOptions = {
-        zoom: 11,
-        center: {lat: 37.601, lng: -122.205}
-      }
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+var setMarkers = function(events){
+  events.forEach(function(event){
+    var marker = new google.maps.Marker({
+        position: {lat: event.lat, lng: event.lng},
+        title: event.name,
+        animation: google.maps.Animation.DROP,
+        map: map
+      });
+    markers.push(marker);
+  });
+}
 
-      // var marker;
-      // var markers = new Array();
+var createEventsHTML = function(events){
+  var html = "<ul id=\"events\">";
+  events.forEach(function(event){
+    html += "<li class=\"list-box event\"><h4>" + event.name + "</h4><p>" + event.address + "</p><p>" + event.time + "</p></li>"
+  })
+  html += "</ul>"
+  return html;
+}
 
-      // for (var i = 0; i < locations.length; i++) {
-      //   new google.maps.Marker({
-      //     position: locations[i].coordinates,
-      //     title: locations[i].name,
-      //     map: map
-      //   });
+var createDayURL = function(day){
+  var html = "<div id=\"week-link\"><a href=\"/days\"> << Back to week </a><h3>" + day + "</h3></div>";
+  return html;
+}
 
-      //   markers.push(marker);
-      // }
+var displayWeek = function(e){
+  e.preventDefault();
+  var url = $(this).attr("href")
+  console.log(url);
+  $.get(url).done(function(response){
+    $("#week-link").remove();
+    $("#events").remove();
+    removeMarkers();
+    $("#week").show();
+  })
+}
 
-      // To add the marker to the map, call setMap();
-      // marker.setMap(map);
+var removeMarkers = function(){
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
   }
+  markers = [];
+}
 
 // var locations = [
 //       {name: "9:20 Special",

@@ -1,13 +1,12 @@
 get '/events/:day' do
-  @day = params[:day]
-  # @events = Event.where("day = #{@day}")
-  p "I'm in the route!"
-  # p @events
+  @day = params[:day].capitalize
+  events = Event.where(day: @day)
+  p events
 
-  # if request.xhr?
-  #   @events
-  # else
-  # end
+  if request.xhr?
+    events.to_json
+  else
+  end
 end
 
 get '/events/new' do
