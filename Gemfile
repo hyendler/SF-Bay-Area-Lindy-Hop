@@ -16,6 +16,8 @@ gem 'bcrypt-ruby'
 
 gem 'shotgun'
 
+gem 'dotenv'
+
 group :development, :test do
   gem 'faker'
   gem 'rspec'
