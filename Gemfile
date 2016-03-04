@@ -20,6 +20,9 @@ gem 'dotenv'
 
 gem 'geocoder'
 
+gem 'json'
+# gem 'rest-open-uri'
+
 group :development, :test do
   gem 'faker'
   gem 'rspec'

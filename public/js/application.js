@@ -5,7 +5,7 @@ $(document).ready(function () {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 37.601, lng: -122.205},
     // scrollwheel: false,
-    zoom: 11
+    zoom: 10
 
     // setUpAllMarkets();
   });
