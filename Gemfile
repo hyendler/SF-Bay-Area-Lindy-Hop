@@ -18,6 +18,8 @@ gem 'shotgun'
 
 gem 'dotenv'
 
+gem 'geocoder'
+
 group :development, :test do
   gem 'faker'
   gem 'rspec'

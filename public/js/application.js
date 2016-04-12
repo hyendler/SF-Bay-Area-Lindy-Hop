@@ -5,7 +5,7 @@ $(document).ready(function () {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 37.601, lng: -122.205},
     // scrollwheel: false,
-    zoom: 11
+    zoom: 10
 
     // setUpAllMarkets();
   });
@@ -60,16 +60,16 @@ var setMarkers = function(events){
 }
 
 var createEventsHTML = function(events){
-  var html = "<ul id=\"events\">";
+  var html = "<div id=\"events\">";
   events.forEach(function(event){
-    html += "<li class=\"list-box event\"><h4>" + event.name + "</h4><p>" + event.address + "</p><p>" + event.time + "</p></li>"
+    html += "<div class=\"list-box event\"><h5>" + event.name + "</h5><p>" + event.address + "</p><p><span class=\"time\">" + event.time + "</span></p></div>"
   })
-  html += "</ul>"
+  html += "</div>"
   return html;
 }
 
 var createDayURL = function(day){
-  var html = "<div id=\"week-link\"><a href=\"/days\"> << Back to week </a><h3>" + day + "</h3></div>";
+  var html = "<div id=\"week-link\"><a href=\"/days\"><div class=\"row text-center\"><h4><    " + day.toUpperCase() + "</h4></div></a></div>";
   return html;
 }
 
