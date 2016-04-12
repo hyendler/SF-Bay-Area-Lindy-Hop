@@ -94,17 +94,24 @@ a:active {
   width: 105%;
 }
 
+.list-box.day a:visited .row {
+  color: #244c49;
+  background-color: #EADFB0;
+}
+
 .day a:hover .row {
   background-color: #F0E8C2;
   color: #2B716B;
 }
 
-.list-box.day a:active .row, 
-.list-box.day a:visited .row,
-#week-link a:hover .row {
+.list-box.day a:active .row, {
   color: #244c49;
   background-color: #EADFB0;
+}
 
+.week-link a:visited .row {
+  color: #244c49;
+  text-decoration: none;
 }
 
 #week-link a:hover .row {
@@ -112,7 +119,7 @@ a:active {
   background-color: #EADFB0;
 }
 
-#week-link .row a:active, .week-link a:visited .row {
+#week-link .row a:active {
   color: #244c49;
   text-decoration: none;
 }
