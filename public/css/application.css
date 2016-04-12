@@ -1,15 +1,43 @@
 /* general */
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 /* index */
+
+body, p, li {
+  font-family: "Open Sans";
+}
+
+h3, h4, h5 {
+  font-family: "Open Sans Condensed";
+  font-weight: 700;
+}
 
 #map {
   width: 100%;
   height: 100vh;
 }
 
+#map:before {
+    box-shadow: 12px 5px 12px -12px rgba(0, 0, 0, 0.75) inset;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 20px;
+    z-index: 1000;
+}
+
 .sidebar {
   /*width: 300px;*/
   height: 100vh;
+  background-color: #F6EECD;
+  padding-right: 0px;
+  -webkit-box-shadow: 12px 5px 12px -10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 12px 5px 12px -10px rgba(0,0,0,0.75);
+  box-shadow: 12px 5px 12px -10px rgba(0,0,0,0.75);
+ /*-webkit-box-shadow: inset 0 10px 10px -10px black;
+  -moz-box-shadow: inset 0 10px 10px -10px black;
+  box-shadow: inset 0 10px 10px -10px black;*/
 }
 
 @media (min-width: 768px)
@@ -32,11 +60,101 @@
 }
 
 img {
-  height: 60px;
+  width: 100%;
+}
+
+.logo {
+  margin: 10px auto;
+}
+
+h1 {
+  margin-bottom: 0px;
 }
 .list-box {
   list-style-type: none;
 }
+
+a {
+  color: #66696b;
+}
+
+a:hover, 
+a:visited, 
+a:active {
+  text-decoration: none;
+}
+
+.graphic {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.clouds {
+  width: 105%;
+}
+
+.list-box.day a:visited .row {
+  color: #244c49;
+  background-color: #EADFB0;
+}
+
+.day a:hover .row {
+  background-color: #F0E8C2;
+  color: #2B716B;
+}
+
+.list-box.day a:active .row, {
+  color: #244c49;
+  background-color: #EADFB0;
+}
+
+.week-link a:visited .row {
+  color: #244c49;
+  text-decoration: none;
+}
+
+#week-link a:hover .row {
+  color: #2B716B;
+  background-color: #EADFB0;
+}
+
+#week-link .row a:active {
+  color: #244c49;
+  text-decoration: none;
+}
+
+.list-box.event h5 {
+  font-family: "Open Sans";
+  font-weight: 600;
+}
+
+#events {
+  border-top: 1px solid #d5cdaa;
+}
+
+.list-box.event {
+  border-bottom: 1px solid #d5cdaa;
+  margin: 10px 0px;
+}
+
+.list-box.event p {
+  font-weight: 300;
+  font-size: 85%;
+}
+
+.time {
+  font-weight: 600;
+  color: #2B716B;
+}
+/* list of things to do:
+- change font size and spacing on day list when in media query large screen
+- figure out the rendering for the pngs
+
+
+ */
+
+
 
 
 
